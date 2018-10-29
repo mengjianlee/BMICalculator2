@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculate(View view){
-        String weightValue;
-        String heightValue;
+        double weightValue;
+        double heightValue;
         double result;
         if(TextUtils.isEmpty(weight.getText())){
             weight.setError("Please enter you weight");
@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
             height.setError("Please enter you height");
             return;
         }
-        weightValue = weight.getText().toString();
-        heightValue = height.getText().toString();
-        result = Double.parseDouble(weightValue)/Double.parseDouble(heightValue)*Double.parseDouble(heightValue);
+        weightValue = Double.parseDouble(weight.getText().toString());
+        heightValue = Double.parseDouble(height.getText().toString());
+        result = weightValue/(heightValue/100*heightValue/100);
 
         Intent intent = new Intent(this, Main2Activity.class);
         intent.putExtra(TAG_MESSAGE, result);
